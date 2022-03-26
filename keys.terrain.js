@@ -2,11 +2,9 @@
 // to populate secret in CI environment instead of hardcoding
 
 module.exports = {
-  custom_tester_1: {
+  bombay: {
     mnemonic:
-      "shiver position copy catalog upset verify cheap library enjoy extend second peasant basic kit polar business document shrug pass chuckle lottery blind ecology stand",
+      "early rule cup kitten click sunny girl syrup base repeat nasty exclude bracket early candy exchange course hollow outside select current pen march issue",
   },
-  custom_tester_2: {
-    privateKey: "fGl1yNoUnnNUqTUXXhxH9vJU0htlz9lWwBt3fQw+ixw=",
-  },
+  
 };

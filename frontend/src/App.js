@@ -83,7 +83,7 @@ function App() {
         <ConnectWallet />
       </header> */}
       <form onSubmit={handleSubmit}>
-        <input class="name formEntry" placeholder="Name" type='text' value={url} onChange={(e) => setUrl(e.target.value)}/>
+        <input className="name formEntry" placeholder="Name" type='text' value={url} onChange={(e) => setUrl(e.target.value)}/>
         <button type='submit'>Submit</button>
       </form>
       <button onClick={() => window.open(qrUrl)}>{isQrUrlSubmitted ? "View QR Code" : "Not Submitted"}</button>
