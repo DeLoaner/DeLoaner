@@ -1,6 +1,9 @@
 import './App.css'
 
-import Payment from './Payment'
+import Payment from './components/Payment'
+import { ConnectWallet } from './components/ConnectWallet'
+import WalletPage from './components/WalletPage'
+import WalletTransfer from './components/WalletTransfer'
 
 import { useEffect, useState } from 'react'
 import {
@@ -11,7 +14,7 @@ import {
 
 import * as execute from './contract/execute'
 import * as query from './contract/query'
-import { ConnectWallet } from './components/ConnectWallet'
+// import { ConnectWallet } from './components/ConnectWallet'
 
 const URL_TMP = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=%s"
 
@@ -92,6 +95,9 @@ function App() {
       </form>
       <button onClick={() => window.open(qrUrl)}>{isQrUrlSubmitted ? "View QR Code" : "Not Submitted"}</button>
       <Payment />
+      <ConnectWallet />
+      <WalletPage />
+      <WalletTransfer />
     </div>
   )
 }

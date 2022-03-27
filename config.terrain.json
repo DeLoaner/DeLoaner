@@ -3,7 +3,7 @@
     "_base": {
       "store": {
         "fee": {
-          "gasLimit": 2000000,
+          "gasLimit": 3000000,
           "amount": {
             "uluna": 1000000
           }
@@ -11,13 +11,14 @@
       },
       "instantiation": {
         "fee": {
-          "gasLimit": 2000000,
+          "gasLimit": 3000000,
           "amount": {
             "uluna": 1000000
           }
         },
         "instantiateMsg": {
-          "count": 0
+          "count": 0,
+          "sender": "terra1rdf2l8uz8yunc5trzd3fwnfw3pe7d9mz3cunys"
         }
       }
     }
