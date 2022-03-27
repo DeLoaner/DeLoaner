@@ -1,5 +1,7 @@
 import './App.css'
 
+import Payment from './Payment'
+
 import { useEffect, useState } from 'react'
 import {
   useWallet,
@@ -57,9 +59,8 @@ function App() {
     setQrUrl(user_url)
   }
 
-  return (
-    <div className="App">
-      {/* <header className="App-header">
+  // Example:
+  {/* <header className="App-header">
         <div style={{ display: 'inline' }}>
           COUNT: {count} {updating ? '(updating . . .)' : ''}
           <button onClick={onClickIncrement} type="button">
@@ -82,11 +83,15 @@ function App() {
         )}
         <ConnectWallet />
       </header> */}
+
+  return (
+    <div className="App">    
       <form onSubmit={handleSubmit}>
         <input className="name formEntry" placeholder="Name" type='text' value={url} onChange={(e) => setUrl(e.target.value)}/>
         <button type='submit'>Submit</button>
       </form>
       <button onClick={() => window.open(qrUrl)}>{isQrUrlSubmitted ? "View QR Code" : "Not Submitted"}</button>
+      <Payment />
     </div>
   )
 }
