@@ -6,8 +6,13 @@ import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-export default function Payment() {
+export default function Payment({ pageNum, setPageNum }) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
   return (
+    
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <Box sx={{ my: 3, mx: 2 }}>
         <Grid container alignItems="center">
@@ -22,11 +27,12 @@ export default function Payment() {
       <Box sx={{ m: 2 }}>
 
         <Stack direction="column" spacing={5}>
+        <form onSubmit={handleSubmit}></form>
       <Chip label="Visa/Master Card" component="a" href="#basic-chip" variant="outlined" clickable />
       <br></br>
       <Chip label="Paypal" component="a" href="#basic-chip" variant="outlined" clickable />
       <br></br>
-      <Chip label="Pay with Terra" component="a" href="#basic-chip" variant="outlined" clickable />
+      <Chip label="Pay with Terra" component="a" href="#basic-chip" variant="outlined" clickable = {true} onClick={() => setPageNum(5)}/>
 
     </Stack>
       </Box>

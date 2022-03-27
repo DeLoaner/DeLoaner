@@ -5,12 +5,24 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { Alert } from "@mui/material";
 
 export default function FormPropsTextFields() {
+  const handleSubmit = (e) => { 
+    e.preventDefault()
+    alert('submitted')
+  };
+
   return (
+    <div style={{marginTop: '25px',marginLeft:'600px'}}>
     <Box sx={{ width: "100%", maxWidth: 200, bgcolor: "background.paper" }}>
       <Grid item xs={12} md={6}>
+      <form onSubmit={handleSubmit}>
         <Stack direction="column" spacing={2}>
+        <Typography color="text.secondary" variant="body2">
+        Please enter the required fields
+        </Typography>
+          
           <TextField
             required
             id="wallet id"
@@ -30,16 +42,11 @@ export default function FormPropsTextFields() {
             id="outlined-password-input"
             label="Amount transferred"
           />
-          <Button
-            variant="outlined"
-            onClick={() => {
-              window.open("google.com");
-            }}
-          >
-            Submit
-          </Button>
+          <Button variant="outlined" type='submit'> Submit </Button>
         </Stack>
+        </ form>
       </Grid>
     </Box>
+    </div>
   );
 }

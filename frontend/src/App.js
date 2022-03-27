@@ -4,6 +4,19 @@ import Payment from './components/Payment'
 import { ConnectWallet } from './components/ConnectWallet'
 import WalletPage from './components/WalletPage'
 import WalletTransfer from './components/WalletTransfer'
+import Smallbiz from './smallbiz'
+import Home from './components/Home'
+
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
 
 import { useEffect, useState } from 'react'
 import {
@@ -25,6 +38,7 @@ function App() {
   const [url, setUrl] = useState('')
   const [qrUrl, setQrUrl] = useState('')
   const [isQrUrlSubmitted, setIsQrUrlSubmitted] = useState(false)
+  const [pageNum, setPageNum] = useState(7)
 
   const { status } = useWallet()
 
@@ -88,16 +102,65 @@ function App() {
       </header> */}
 
   return (
-    <div className="App">    
-      <form onSubmit={handleSubmit}>
-        <input className="name formEntry" placeholder="Name" type='text' value={url} onChange={(e) => setUrl(e.target.value)}/>
-        <button type='submit'>Submit</button>
+    <div className="App">
+      <Box >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h4" component="div" >
+            Deloaner
+          </Typography> 
+          <Box sx={{ flexGrow: 1 }} />
+          <Button onClick={() => setPageNum(7)} color="inherit">Home</Button>
+          <Button onClick={() => setPageNum(1)} color="inherit">Auth</Button>
+          <Button onClick={() => setPageNum(2)} color="inherit">Dashboard</Button>
+          <Button onClick={() => setPageNum(3)} color="inherit">Payment</Button>
+          <Button onClick={() => setPageNum(4)} color="inherit">Connect</Button>
+          <Button onClick={() => setPageNum(5)} color="inherit">Login</Button>
+          <Button onClick={() => setPageNum(6)} color="inherit">Transfer</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>  
+      {pageNum === 7 && <Home />}
+      {pageNum === 1 && (
+        <form onSubmit={handleSubmit}>
+          <div style={{marginTop: '25px',marginLeft:'600px'}}>
+          <Box sx={{ width: "100%", maxWidth: 200, bgcolor: "background.paper" }}>
+          <Grid item xs={12} md={6}>
+          <Stack direction="column" spacing={2}>
+          <TextField
+            required
+            id="Website URL"
+            label="Website URL"
+            defaultValue=""
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        
+        <button type='submit'> Creat QR Code</button>
+        <button onClick={() => setPageNum(2)}> Business Owner Dashboard</button>
+        <button onClick={() => window.open(qrUrl)}>{isQrUrlSubmitted ? "View QR Code" : "Not Submitted"}</button>
+        </Stack>
+        </Grid>
+        </Box>
+        </div>
       </form>
-      <button onClick={() => window.open(qrUrl)}>{isQrUrlSubmitted ? "View QR Code" : "Not Submitted"}</button>
-      <Payment />
-      <ConnectWallet />
-      <WalletPage />
-      <WalletTransfer />
+      )}
+      {pageNum === 2 && (
+        <Smallbiz />
+      )}
+      {pageNum === 3 && (
+          <Payment pageNum={pageNum} setPageNum={setPageNum} />
+      )}
+      {pageNum === 4 && (
+       <ConnectWallet />
+      )}
+      {pageNum === 5 && (
+      <WalletPage pageNum={pageNum} setPageNum={setPageNum} />
+      
+      )}
+      {pageNum === 6 && (
+      <WalletTransfer  />
+      )}
     </div>
   )
 }
