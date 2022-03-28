@@ -1,3 +1,0 @@
-[submodule "DeLoaner_contracts_counter"]
-	path = contracts/counter
-	url = git@github.com:CheeksTheGeek/counter
